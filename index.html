@@ -100,6 +100,8 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
+      text-align: center;
       padding: 120px 5% 80px;
       position: relative;
       overflow: hidden;
@@ -142,7 +144,7 @@
       text-transform: uppercase;
       padding: 0.4rem 1rem;
       border-radius: 100px;
-      margin-bottom: 2rem;
+      margin: 0 auto 2rem;
       width: fit-content;
       opacity: 0;
     }
@@ -168,6 +170,8 @@
       letter-spacing: -0.04em;
       margin-bottom: 1.5rem;
       max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .hero-headline .line { display: block; overflow: hidden; }
@@ -178,7 +182,7 @@
       font-size: clamp(1rem, 2vw, 1.2rem);
       color: var(--muted);
       max-width: 520px;
-      margin-bottom: 2.5rem;
+      margin: 0 auto 2.5rem;
       opacity: 0;
       font-weight: 300;
     }
@@ -188,6 +192,7 @@
     .hero-actions {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 1.2rem;
       flex-wrap: wrap;
       opacity: 0;
@@ -229,11 +234,13 @@
 
     .hero-stats {
       display: flex;
+      justify-content: center;
       gap: 3rem;
       margin-top: 5rem;
       padding-top: 2.5rem;
       border-top: 1px solid var(--border);
       opacity: 0;
+      width: 100%;
     }
 
     .stat-num {
