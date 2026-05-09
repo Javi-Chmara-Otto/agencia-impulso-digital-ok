@@ -23,7 +23,7 @@
       --font-body: 'DM Sans', sans-serif;
     }
 
-    html { scroll-behavior: smooth; }
+    html, body { scroll-behavior: smooth; overflow-x: hidden; max-width: 100%; }
 
     body {
       background: var(--bg);
@@ -732,8 +732,9 @@
       .proceso-steps { grid-template-columns: 1fr 1fr; }
       .proceso-steps::before { display: none; }
 
-      .hero { text-align: center; }
-      .hero-content { margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+      .hero { text-align: center; padding: 0 4%; overflow: hidden; }
+      .hero-content { margin: 0 auto; display: flex; flex-direction: column; align-items: center; width: 100%; }
+      .hero h1 { font-size: clamp(2.2rem, 10vw, 3rem); word-break: break-word; }
       .hero-bg-glow-1 { right: 50%; transform: translateX(50%); top: 10%; }
 
       .hero-stats { gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
@@ -747,7 +748,7 @@
   <!-- NAVBAR -->
   <nav class="navbar" id="navbar">
     <a href="#" class="logo-link">
-      <img src="logo-transparente.png" alt="Impulso Digital" class="nav-logo-img">
+      <img src="Logo completo.png" alt="Impulso Digital" class="nav-logo-img">
     </a>
     <ul class="nav-links">
       <li><a href="#servicios">Servicios</a></li>
