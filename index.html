@@ -166,6 +166,18 @@
       margin-top: 0.3rem;
     }
 
+    /* ── SECTION GLOWS ── */
+    .section-glow {
+      position: absolute;
+      border-radius: 50%;
+      background: #b5ff4d;
+      filter: blur(120px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    section { position: relative; }
+    section > *:not(.section-glow) { position: relative; z-index: 1; }
+
     /* ── SECTION BASE ── */
     section { padding: 100px 5%; }
 
@@ -807,6 +819,7 @@
 
   <!-- PROBLEMA -->
   <section id="problema">
+    <div class="section-glow" style="width:500px;height:500px;top:-150px;right:-100px;opacity:0.06;"></div>
     <div class="section-tag">El problema</div>
     <h2 class="section-title">Tu negocio existe.<br>Tus clientes no te encuentran.</h2>
 
@@ -867,6 +880,7 @@
 
   <!-- SERVICIOS -->
   <section id="servicios">
+    <div class="section-glow" style="width:450px;height:450px;bottom:-100px;left:-100px;opacity:0.05;"></div>
     <div class="servicios-header">
       <div>
         <div class="section-tag">Servicios</div>
@@ -924,6 +938,7 @@
 
   <!-- PORTFOLIO -->
   <section id="portfolio">
+    <div class="section-glow" style="width:500px;height:500px;top:-80px;left:50%;transform:translateX(-50%);opacity:0.05;"></div>
     <div class="portfolio-header">
       <div>
         <div class="section-tag">Portfolio</div>
@@ -973,6 +988,7 @@
 
   <!-- PROCESO -->
   <section id="proceso">
+    <div class="section-glow" style="width:400px;height:400px;top:-50px;right:-80px;opacity:0.05;"></div>
     <div style="text-align:center; margin-bottom: 1rem;">
       <div class="section-tag">Cómo funciona</div>
       <h2 class="section-title">De cero a online en 5 días.</h2>
