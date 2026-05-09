@@ -87,13 +87,49 @@
       background: #ccff00; opacity: 0.05; filter: blur(100px); border-radius: 50%; pointer-events: none; z-index: 0;
     }
     .hero-svg-bg { position: absolute; top: 0; right: 0; width: 100%; height: 100%; opacity: 0.3; pointer-events: none; z-index: 0; }
-    .hero-content { position: relative; z-index: 10; max-width: 800px; padding-top: 120px; }
+    .hero-content { position: relative; z-index: 10; max-width: 800px; padding-top: 130px; }
+    /* ── HERO ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-badge {
+      animation: fadeUp 0.6s ease forwards;
+      animation-delay: 0.1s;
+      opacity: 0;
+    }
+
+    .hero h1 {
+      animation: fadeUp 0.7s ease forwards;
+      animation-delay: 0.3s;
+      opacity: 0;
+    }
+
+    .hero-subtitle {
+      animation: fadeUp 0.7s ease forwards;
+      animation-delay: 0.5s;
+      opacity: 0;
+    }
+
+    .hero-cta {
+      animation: fadeUp 0.6s ease forwards;
+      animation-delay: 0.7s;
+      opacity: 0;
+    }
+
+    .hero-stats {
+      animation: fadeUp 0.6s ease forwards;
+      animation-delay: 0.9s;
+      opacity: 0;
+    }
+
     .hero-badge {
       display: inline-block; padding: 6px 16px; border-radius: 50px;
       border: 1px solid rgba(181,255,77,0.4); background: rgba(181,255,77,0.05);
-      color: var(--accent); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.20rem;
+      color: var(--accent); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.2rem;
     }
-    .hero h1 { font-family: var(--font-head); font-size: clamp(3rem, 8vw, 5.5rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 1.5rem; text-transform: uppercase; color: #f0f0f0; }
+    .hero h1 { font-family: var(--font-head); font-size: clamp(3rem, 8vw, 5.5rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 1rem; text-transform: uppercase; color: #f0f0f0; }
     .hero h1 span { color: var(--accent); }
     .hero-subtitle { color: #9ca3af; font-size: clamp(1.125rem, 2vw, 1.25rem); max-width: 600px; margin-bottom: 2.5rem; line-height: 1.6; font-weight: 300; }
     .hero-cta {
@@ -752,12 +788,12 @@
     <!-- STATS fuera del hero-content para ocupar ancho completo -->
     <div class="hero-stats">
       <div>
-        <div class="stat-num" data-count="5">0</div>
-        <div class="stat-label">días de entrega</div>
+        <div class="stat-num" data-count="48" data-suffix="hs">0</div>
+        <div class="stat-label">primer boceto</div>
       </div>
       <div>
-        <div class="stat-num" data-count="150" data-prefix="USD ">0</div>
-        <div class="stat-label">precio de entrada</div>
+        <div class="stat-num" data-count="20" data-prefix="+">0</div>
+        <div class="stat-label">rubros atendidos</div>
       </div>
       <div>
         <div class="stat-num" data-count="100" data-suffix="%">0</div>
@@ -1019,28 +1055,23 @@
       });
     });
 
-    // ── COUNTER ANIMATION ──
-    gsap.utils.toArray('[data-count]').forEach(el => {
-      const target = parseInt(el.dataset.count);
-      const prefix = el.dataset.prefix || '';
-      const suffix = el.dataset.suffix || '';
+    // ── COUNTER ANIMATION ── arranca al cargar, no al hacer scroll
+    setTimeout(() => {
+      gsap.utils.toArray('[data-count]').forEach(el => {
+        const target = parseInt(el.dataset.count);
+        const prefix = el.dataset.prefix || '';
+        const suffix = el.dataset.suffix || '';
 
-      ScrollTrigger.create({
-        trigger: el,
-        start: 'top 85%',
-        once: true,
-        onEnter: () => {
-          gsap.to({ val: 0 }, {
-            val: target,
-            duration: 1.5,
-            ease: 'power2.out',
-            onUpdate: function () {
-              el.textContent = prefix + Math.round(this.targets()[0].val) + suffix;
-            }
-          });
-        }
+        gsap.to({ val: 0 }, {
+          val: target,
+          duration: 1.5,
+          ease: 'power2.out',
+          onUpdate: function () {
+            el.textContent = prefix + Math.round(this.targets()[0].val) + suffix;
+          }
+        });
       });
-    });
+    }, 900); // arranca cuando las stats ya terminaron de aparecer (0.9s delay)
 
     // ── PROBLEMA ITEMS ──
     gsap.utils.toArray('.problema-item').forEach((el, i) => {
