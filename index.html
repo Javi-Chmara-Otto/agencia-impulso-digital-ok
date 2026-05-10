@@ -176,7 +176,7 @@
       z-index: 0;
     }
     section { position: relative; }
-    section > *:not(.section-glow) { position: relative; z-index: 1; }
+    section > *:not(.section-glow):not(.cta-glow) { position: relative; z-index: 1; }
 
     /* ── SECTION BASE ── */
     section { padding: 100px 5%; }
@@ -740,6 +740,7 @@
 
       .hero-stats { gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
 
+      #contacto { padding-top: 60px; }
       footer { flex-direction: column; text-align: center; }
     }
   </style>
